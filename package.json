@@ -1,0 +1,24 @@
+{
+  "name": "algoClass",
+  "version": "1.0.0",
+  "description": "Welcome to the exercises. This is where the magic happens!",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:dev": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robbiedhickey/algoClass.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robbiedhickey/algoClass/issues"
+  },
+  "homepage": "https://github.com/robbiedhickey/algoClass#readme",
+  "devDependencies": {
+    "jest": "^23.1.0"
+  }
+}

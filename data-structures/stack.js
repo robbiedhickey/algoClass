@@ -51,29 +51,56 @@ What's the time complexity?
  */
 
 function Stack(capacity) {
-  // implement me...
+  this._capacity = capacity || 100;
+  this._storage = {};
+  this._nextIndex = 0;
 }
 
 Stack.prototype.push = function(value) {
-  // implement me...
+  if (this._capacity <= this.count()) {
+    throw 'Max capacity already reached. Remove element before adding a new one.';
+  }
+
+  this._storage[this._nextIndex] = value;
+  this._nextIndex++;
+  return this.count();
 };
-// Time complexity:
+// Time complexity: O(1)
 
 Stack.prototype.pop = function() {
-  // implement me...
+  let peeked = this.peek();
+  delete this._storage[this._nextIndex - 1];
+  this._nextIndex--;
+  return peeked;
 };
-// Time complexity:
+// Time complexity: O(1)
 
 Stack.prototype.peek = function() {
-  // implement me...
+  return this._storage[this._nextIndex - 1];
 };
-// Time complexity:
+// Time complexity: O(1)
 
 Stack.prototype.count = function() {
-  // implement me...
+  return this._nextIndex;
 };
-// Time complexity:
+// Time complexity: O(1)
 
+Stack.prototype.contains = function(val) {
+  let vals = Object.values(this._storage);
+  return vals.includes(val);
+};
+// Time complexity: O(n)
+
+Stack.prototype.until = function(val) {
+  let indexToFind = this._nextIndex;
+
+  while (indexToFind >= 0) {
+    if (this._storage[indexToFind--] === val) {
+      return this._nextIndex - indexToFind - 1;
+    }
+  }
+};
+// Time complexity: O(n)
 
 /*
 *** Exercises:
@@ -93,3 +120,5 @@ You are given three towers (stacks) and N disks, each of different size. You can
    3. no disk can be placed on top of a disk that is smaller than it
 The disks begin on tower#1. Write a function that will move the disks from tower#1 to tower#3 in such a way that none of the constraints are violated.
  */
+
+module.exports = Stack;

@@ -51,30 +51,58 @@ What's the time complexity?
  */
 
 function Queue(capacity) {
-  // implement me...
+  this._capacity = capacity || 10;
+  this._storage = {};
+  this._head = 0;
+  this._tail = 0;
 }
 
 Queue.prototype.enqueue = function(value) {
-  // implement me...
+  if (this.count() >= this._capacity) {
+    throw `Max capacity of ${
+      this._capacity
+    } already reached. Remove element before adding a new one.`;
+  }
+
+  this._storage[this._tail] = value;
+  this._tail++;
+  return this.count();
 };
-// Time complexity:
+// Time complexity: O(1)
 
 Queue.prototype.dequeue = function() {
-  // implement me...
+  let peeked = this.peek();
+  delete this._storage[this._head];
+  this._head++;
+  return peeked;
 };
-// Time complexity:
+// Time complexity: O(1)
 
 Queue.prototype.peek = function() {
-  // implement me...
+  return this._storage[this._head];
 };
 
 Queue.prototype.count = function() {
-  // implement me...
+  return this._tail - this._head;
 };
-// Time complexity:
+// Time complexity: O(1)
 
+Queue.prototype.contains = function(val) {
+  let vals = Object.values(this._storage);
+  return vals.includes(val);
+};
+// Time complexity: O(N)
 
+Queue.prototype.until = function(val) {
+  let indexToFind = this._head;
 
+  while (indexToFind <= this._tail) {
+    if (this._storage[indexToFind++] === val) {
+      return indexToFind - this._head;
+    }
+  }
+};
+// Time complexity: O(N)
 /*
 *** Exercises:
 
@@ -86,3 +114,5 @@ Queue.prototype.count = function() {
 
 
  */
+
+module.exports = Queue;
