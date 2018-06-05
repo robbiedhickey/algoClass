@@ -73,7 +73,7 @@ Queue.prototype.enqueue = function(value) {
 Queue.prototype.dequeue = function() {
   let peeked = this.peek();
   delete this._storage[this._head];
-  this._head++;
+  if (this._head < this._tail) this._head++;
   return peeked;
 };
 // Time complexity: O(1)
@@ -103,6 +103,8 @@ Queue.prototype.until = function(val) {
   }
 };
 // Time complexity: O(N)
+
+// TODO: Do these after we go over Big O
 /*
 *** Exercises:
 

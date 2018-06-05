@@ -60,6 +60,14 @@ describe('Stack', () => {
 
       expect(stack.count()).toBe(2);
     });
+
+    test('handles popping an empty stack', () => {
+      let stack = new Stack();
+      let val = stack.pop();
+
+      expect(stack.count()).toBe(0);
+      expect(val).toBeFalsy;
+    });
   });
 
   describe('peek()', () => {

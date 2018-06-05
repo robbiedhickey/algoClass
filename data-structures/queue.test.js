@@ -37,6 +37,18 @@ describe('Queue', () => {
       queue.dequeue();
       expect(queue.count()).toBe(2);
     });
+
+    test('can dequeue empty queue without error', () => {
+      let queue = new Queue();
+      let val = queue.dequeue();
+      expect(queue.count()).toBe(0);
+      expect(val).toBeFalsy();
+
+      queue.enqueue(1);
+      queue.dequeue();
+      queue.dequeue();
+      expect(queue.count()).toBe(0);
+    });
   });
 
   describe('peek()', () => {

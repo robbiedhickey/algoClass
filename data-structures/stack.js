@@ -70,7 +70,9 @@ Stack.prototype.push = function(value) {
 Stack.prototype.pop = function() {
   let peeked = this.peek();
   delete this._storage[this._nextIndex - 1];
-  this._nextIndex--;
+  if (this._nextIndex > 0) {
+    this._nextIndex--;
+  }
   return peeked;
 };
 // Time complexity: O(1)
@@ -102,6 +104,7 @@ Stack.prototype.until = function(val) {
 };
 // Time complexity: O(n)
 
+// TODO: Do these after we go over Big O
 /*
 *** Exercises:
 
