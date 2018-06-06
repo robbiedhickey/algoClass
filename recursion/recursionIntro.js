@@ -41,7 +41,7 @@ function recursiveMultiplier(arr, num) {
     return arr * num;
   }
 
-  return [arr.splice(0, 1) * num].concat(recursiveMultiplier(arr, num--));
+  return [arr.shift() * num].concat(recursiveMultiplier(arr, num--));
 }
 
 //6. Write a function 'recursiveReverse' that takes an array and uses recursion to
