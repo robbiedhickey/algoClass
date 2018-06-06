@@ -94,25 +94,24 @@ Queue.prototype.contains = function(val) {
 // Time complexity: O(N)
 
 Queue.prototype.until = function(val) {
-  let indexToFind = this._head;
+  let slidingHead = this._head;
 
-  while (indexToFind <= this._tail) {
-    if (this._storage[indexToFind++] === val) {
-      return indexToFind - this._head;
+  while (slidingHead <= this._tail) {
+    if (this._storage[slidingHead++] === val) {
+      return slidingHead - this._head;
     }
   }
 };
 // Time complexity: O(N)
 
-// TODO: Do these after we go over Big O
 /*
 *** Exercises:
 
-1. Implement a queue using two stacks.
+TODO: 1. Implement a queue using two stacks.
 
-2. Implement a double-ended queue, with the following methods: enqueueLeft, dequeueLeft, enqueueRight, dequeueRight.
+TODO: 2. Implement a double-ended queue, with the following methods: enqueueLeft, dequeueLeft, enqueueRight, dequeueRight.
 
-3. Given a tree, print out the value of each node in breadth-first order using a queue data structure.
+TODO: 3. Given a tree, print out the value of each node in breadth-first order using a queue data structure.
 
 
  */

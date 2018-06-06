@@ -1,4 +1,4 @@
-let Stack = require('./stack');
+let { Stack, MinStack } = require('./stack');
 
 describe('Stack', () => {
   describe('constructor()', () => {
@@ -123,6 +123,20 @@ describe('Stack', () => {
       expect(stack.until(1)).toBe(3);
       expect(stack.until(2)).toBe(2);
       expect(stack.until(3)).toBe(1);
+    });
+  });
+});
+
+describe('MinStack', () => {
+  describe('min()', () => {
+    test('returns the smallest value in the stack in constant time', () => {
+      let stack = new MinStack();
+      stack.push(2);
+      stack.push(3);
+      stack.push(1);
+      expect(stack.min()).toEqual(1);
+      stack.pop();
+      expect(stack.min()).toEqual(2);
     });
   });
 });
