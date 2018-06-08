@@ -104,10 +104,44 @@ Queue.prototype.until = function(val) {
 };
 // Time complexity: O(N)
 
+const { Stack } = require('./stack');
+
+function QueueWithStacks(capacity) {
+  this._capacity = capacity;
+  this._inputStack = new Stack();
+  this._outputStack = new Stack();
+}
+
+QueueWithStacks.prototype.enqueue = function(val) {
+  if (this.count() >= this._capacity) throw 'Capacity reached';
+  this._inputStack.push(val);
+  return this.count();
+};
+
+QueueWithStacks.prototype.peek = function() {
+  this._swapStacks();
+  return this._outputStack.peek();
+};
+
+QueueWithStacks.prototype.dequeue = function(val) {
+  this._swapStacks();
+  return this._outputStack.pop();
+};
+
+QueueWithStacks.prototype._swapStacks = function() {
+  while (this._inputStack.count() > 0) {
+    this._outputStack.push(this._inputStack.pop());
+  }
+};
+
+QueueWithStacks.prototype.count = function() {
+  return this._inputStack.count() + this._outputStack.count();
+};
+
 /*
 *** Exercises:
 
-TODO: 1. Implement a queue using two stacks.
+//TODO: 1. Implement a queue using two stacks.
 
 TODO: 2. Implement a double-ended queue, with the following methods: enqueueLeft, dequeueLeft, enqueueRight, dequeueRight.
 
@@ -116,4 +150,4 @@ TODO: 3. Given a tree, print out the value of each node in breadth-first order u
 
  */
 
-module.exports = Queue;
+module.exports = { Queue, QueueWithStacks };
