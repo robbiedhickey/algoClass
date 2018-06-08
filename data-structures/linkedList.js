@@ -10,40 +10,40 @@ Each node is composed of data and a reference/link to the next node.
 
 ** Part 1
 
-myList.forEach(callbackFn)
+TODO: myList.forEach(callbackFn)
 invoke callback function with the value of each node
 
-myList.print()
+TODO: myList.print()
 => string with all values in list (ex: '0, 1, 2, 3')
 
-myList.insertAfter(refNode, value)
+TODO: myList.insertAfter(refNode, value)
 => new node
 insert new node associated with value passed in after refNode
 
-myList.removeAfter(refNode)
+TODO: myList.removeAfter(refNode)
 => removed node
 remove node after the refNode
 
-myList.insertHead(value)
+TODO: myList.insertHead(value)
 => new head
 insert new head node at the beginning of the list with the value passed in
 
-myList.removeHead()
+TODO: myList.removeHead()
 => removed head node
 remove the head node of the linked list
 
-myList.findNode(value)
+TODO: myList.findNode(value)
 => first node that has a value matching what was passed in
 
 
 * Optimization:
 Say we have a linked list that has 100 items and we want to add an item to the very end. How would you do that with your current implementation? How can you modify the data structure to add an item to the end in constant time?
 
-myList.appendToTail(value)
+TODO: myList.appendToTail(value)
 => new tail node
 add a new tail node at the end of the list with the associated value passed in
 
-myList.removeTail()
+TODO: myList.removeTail()
 => removed tail node
 remove the tail node from the list
 
@@ -58,25 +58,23 @@ How can we modify our data structures (Node and Linked List classes) so that we 
 
 Once you've come up with a plan, implement the following methods.
 
-myList.insertBefore(refNode, value)
+TODO: myList.insertBefore(refNode, value)
 => new node inserted
 insert new node with associated value before refNode
 
-myList.removeBefore(refNode)
+TODO: myList.removeBefore(refNode)
 => removed node
 remove node before the refNode passed in
 
 
 *** Additional Exercises:
 
-Implement a circularly linked list:
-https://en.wikipedia.org/wiki/Linked_list#Circularly_linked_list
+TODO: Implement a circularly linked list: https://en.wikipedia.org/wiki/Linked_list#Circularly_linked_list
 
-Reimplement stack and queue data structures using linked lists.
+TODO: Reimplement stack and queue data structures using linked lists.
 
 
  */
-
 
 // PART 1
 
@@ -117,7 +115,7 @@ LinkedList.prototype.insertHead = function(value) {
 
 LinkedList.prototype.removeHead = function() {
   // implement me...
-}
+};
 
 LinkedList.prototype.findNode = function(value) {
   // implement me...
@@ -128,7 +126,6 @@ LinkedList.prototype.appendToTail = function(value) {
   // implement me...
 };
 // Time complexity:
-
 
 // PART 2:
 
@@ -141,8 +138,6 @@ LinkedList.prototype.removeBefore = function(node) {
   // implement me...
 };
 // Time complexity:
-
-
 
 /*
 *** Exercises:

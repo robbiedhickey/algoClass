@@ -18,14 +18,12 @@ now repeat for next unsorted element
 
 *** Exercises
 
-- Implement insertion sort for array of numbers
-- Identify time complexity
-
-- Modify function to take comparator function. specify default if not provided (check out native Array.sort comparator function for reference)
-- Use your comparator function to verify that your sort is stable by taking input: [{value: 15}, {value: 10, order: 1}, {value: 10, order: 2}]
+TODO: - Implement insertion sort for array of numbers and Identify time complexity
+TODO: - Modify function to take comparator function. specify default if not provided (check out native Array.sort comparator function for reference)
+TODO: - Use your comparator function to verify that your sort is stable by taking input: [{value: 15}, {value: 10, order: 1}, {value: 10, order: 2}]
 
 *** Extra credit
-- Implement shell sort, a generalization of insertion sort
+TODO: - Implement shell sort, a generalization of insertion sort
 (https://en.wikipedia.org/wiki/Shellsort)
 
 */

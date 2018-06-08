@@ -4,16 +4,16 @@ HEAP SORT
 *** Description
 
 Heap sort consists of two parts:
-1) Build a heap out of the data from the input array
-2) Create sorted array by iteratively removing the largest element from the heap and inserting it into the sorted array
+TODO: 1) Build a heap out of the data from the input array
+TODO: 2) Create sorted array by iteratively removing the largest element from the heap and inserting it into the sorted array
 
 *** Exercise
 
-Implement heap sort using the Heap constructor provided.
+TODO: Implement heap sort using the Heap constructor provided.
 
 *** Extra Credit
 
-Now try building heapsort from scratch, without using the Heap constructor. See if you can do everything in place.
+TODO: Now try building heapsort from scratch, without using the Heap constructor. See if you can do everything in place.
 (for hints see https://en.wikipedia.org/wiki/Heapsort#Algorithm)
 
 Example:
@@ -43,12 +43,11 @@ Heap.prototype.insert = function(value) {
 
   // Recursive function to handle swaps, input index
   var reheapify = function(index) {
-
     // Get parent index
-    var parentInd = Math.ceil(index/2-1);
+    var parentInd = Math.ceil(index / 2 - 1);
     // Base Case : value < parent or parent is null
     if (parentInd < 0 || that.storage[index] <= that.storage[parentInd]) {
-      return 'value added to index '+index;
+      return 'value added to index ' + index;
     }
     // Recursive Case: swap with parent and make recursive call
     var temp = that.storage[index];
@@ -57,7 +56,7 @@ Heap.prototype.insert = function(value) {
 
     return reheapify(parentInd);
   };
-  return reheapify(that.storage.length-1);
+  return reheapify(that.storage.length - 1);
 };
 
 // Heap remove max method on prototype
@@ -89,14 +88,20 @@ Heap.prototype.removeMax = function() {
     var maxIndex = index;
 
     // Check first child node's value against current node
-    if ((2*index + 1 < that.storage.length) && (that.storage[2*index + 1] > that.storage[index])) {
+    if (
+      2 * index + 1 < that.storage.length &&
+      that.storage[2 * index + 1] > that.storage[index]
+    ) {
       // If greater then set index of max value to first child node's index
-      maxIndex = 2*index + 1;
+      maxIndex = 2 * index + 1;
     }
     // Check second child node's value against current max node
-    if ((2*index + 2 < that.storage.length) && (that.storage[2*index + 2] > that.storage[maxIndex])) {
+    if (
+      2 * index + 2 < that.storage.length &&
+      that.storage[2 * index + 2] > that.storage[maxIndex]
+    ) {
       // If greater then set index of max value to second child node's index
-      maxIndex = 2*index + 2;
+      maxIndex = 2 * index + 2;
     }
     // If the index of the max value is not equal to the index of the current node
     // Then swap the nodes and reheapify at the new index of the current node

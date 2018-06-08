@@ -21,41 +21,41 @@ Constraints:
 This graph implementation is undirected and can have unconnected nodes. The nodes are represented by unique primitive values.
 
 *** Operations:
-graph.addNode(value) // value must be a primitive
+TODO: graph.addNode(value) // value must be a primitive
 => undefined
 Add node to graph
 
-graph.removeNode(value)
+TODO: graph.removeNode(value)
 => undefined
 Remove node from graph
 
-graph.contains(value)
+TODO: graph.contains(value)
 => true/false
 Returns true if value is found in graph, false otherwise
 
-graph.addEdge(value1, value2)
+TODO: graph.addEdge(value1, value2)
 => undefined
 Create connection between two nodes if they're both present in the graph
 
-graph.removeEdge(value1, value2)
+TODO: graph.removeEdge(value1, value2)
 => undefined
 Remove connection between two nodes
 
-graph.hasEdge(value1, value2)
+TODO: graph.hasEdge(value1, value2)
 => true/false
 Returns true if edge exists, false otherwise
 
-graph.forEach(callback)
+TODO: graph.forEach(callback)
 => undefined
 Traverse the graph and invoke the passed callback once for each node. The callback function receives the following for each node: node value, node Neighbors, all nodes.
 
 Implement traversal methods for depth-first and breadth-first traversal. The methods take a starting node and a callback that gets invoked for each node. The callback should receive two arguments: the node value and the distance (number of edges that separate the node from the starting node). See example usage below.
 
-graph.traverseDepthFirst(value1, callback)
+TODO: graph.traverseDepthFirst(value1, callback)
 => undefined
 Starting at the node with the value passed in, traverse the graph and invoke the callback for each node in a depth-first fashion.
 
-graph.traverseBreadthFirst(value, callback)
+TODO: graph.traverseBreadthFirst(value, callback)
 => undefined
 Starting at the node with the value passed in, traverse the graph and invoke the callback for each node in a breadth-first fashion.
 
@@ -82,12 +82,11 @@ traverseBF should be [ [ 1, 0 ], [ 2, 1 ], [ 4, 1 ], [ 3, 2 ], [ 5, 3 ] ]
 
 *** Additional Exercises:
 
-Given a directed graph and two nodes in the graph, write a function that indicates whether there is a route between the two nodes. Bonus: rather than returning a boolean, have your function return the shortest distance between the two nodes (the number of edges that separate them).
+TODO: Given a directed graph and two nodes in the graph, write a function that indicates whether there is a route between the two nodes. Bonus: rather than returning a boolean, have your function return the shortest distance between the two nodes (the number of edges that separate them).
 
 */
 
-
-function Graph () {
+function Graph() {
   this._nodes = {};
 }
 

@@ -15,11 +15,11 @@ View visualization here: https://presentpath.github.io/heap-visualizer/
 
 *** Operations:
 
-heap.insert(value)
+TODO: heap.insert(value)
 => undefined
 Add value to heap according to the shape and heap property
 
-heap.removeMax()
+TODO: heap.removeMax()
 => max value
 Remove the max value from the heap, reorder the heap, and return the max value
 

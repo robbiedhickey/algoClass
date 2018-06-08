@@ -13,15 +13,14 @@ Split array into sublists of size 1, merge adjacent sublists into sorted lists, 
 
 *** Exercises
 
-- Implement recursive merge sort (you might want to write a helper function to handle the merge step)
-- Implement iterative merge sort
-- Identify time complexity
+TODO: - Implement recursive merge sort (you might want to write a helper function to handle the merge step) and identify time complexity
+TODO: - Implement iterative merge sort and Identify time complexity
 
-- Modify function to take comparator function. specify default if not provided (check out native Array.sort comparator function for reference)
-- Use your comparator function to verify that your sort is stable by taking input: [{value: 15}, {value: 10, order: 1}, {value: 10, order: 2}]
+TODO: - Modify function to take comparator function. specify default if not provided (check out native Array.sort comparator function for reference)
+TODO: - Use your comparator function to verify that your sort is stable by taking input: [{value: 15}, {value: 10, order: 1}, {value: 10, order: 2}]
 
 Optimization:
-- Refactor your iterative solution to be a natural merge sort. This means that the initial subarrays are naturally occurring sorted sequences. How does this impact time complexity and adaptivity?
+TODO: - Refactor your iterative solution to be a natural merge sort. This means that the initial subarrays are naturally occurring sorted sequences. How does this impact time complexity and adaptivity?
 ex:
 input array: [ 1 2 4 5 9 ]
 subarrays for regular merge sort: [ [1], [2], [4], [5], [9] ]

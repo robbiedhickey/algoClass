@@ -19,35 +19,35 @@ Hash tables are also referred to as hash mapse or dictionaries.
 
 *** Operations:
 
-myMap.set(key, value)
+TODO: myMap.set(key, value)
 => myMap object
 Store the key-value pair in the storage array.
 If the key already exists, replace stored value with new value.
 Use the hashing function to map the key to an integer and store the value at the corresponding index.
 Account for the possibility of collisions.
 
-myMap.get(key)
+TODO: myMap.get(key)
 => value associated with key, or undefined if none
 
-myMap.has(key)
+TODO: myMap.has(key)
 => true/false depending on if a value has been associated with the key
 
-myMap.delete(key)
+TODO: myMap.delete(key)
 => true if a value was associated with the key
 => false if a value was never associated with the key
 Remove any value associated to the key
 
-myMap.count()
+TODO: myMap.count()
 => integer number of key/value pairs in hash table
 
-myMap.forEach(callbackFn)
+TODO: myMap.forEach(callbackFn)
 => no returned value
 Invokes callback function once for each key-value pair in the hash table
 
 
 *** Additional Exercises:
 
-Resize the hash table:
+TODO: Resize the hash table:
 - if the count becomes greater than 75% of the table size, double the table size and redistribute the key/value pairs
 - if the count becomes less than 25% of the table size, cut the table size in half and redistribute the key/value pairs
 
@@ -60,8 +60,8 @@ Resize the hash table:
 // Simple hashing function to use in your implementation
 function simpleHash(str, tableSize) {
   var hash = 0;
-  for (var i=0; i<str.length; i++) {
-    hash += str.charCodeAt(i) * (i+1);
+  for (var i = 0; i < str.length; i++) {
+    hash += str.charCodeAt(i) * (i + 1);
   }
   return hash % tableSize;
 }
@@ -113,15 +113,13 @@ HashTable.prototype.forEach = function(callback) {
 };
 // Time complexity:
 
-
-
 /*
 *** Exercises:
 
-1. Implement a hash table with a binary search tree.
+TODO: 1. Implement a hash table with a binary search tree.
 
-2. Given two arrays with values, return the values that are present in both. Do this in linear time.
+TODO: 2. Given two arrays with values, return the values that are present in both. Do this in linear time.
 
-3. Implement a hash table using linked lists for collision-handling. Why might this be preferable to using arrays.
+TODO: 3. Implement a hash table using linked lists for collision-handling. Why might this be preferable to using arrays.
 
 */

@@ -17,14 +17,12 @@ sorted portion has now grown:
 
 *** Exercises
 
-- Implement selection sort
-- Identify time complexity
+TODO: - Implement selection sort and Identify time complexity
 
 Stable Variant
-- Implement as a stable sort - rather than swapping, the minimum value is inserted into the first position and all other items are shifted one to the right. How does this impact performance?
-- Modify function to take comparator function. specify default if not provided (check out native Array.sort comparator function for reference)
-- Use your comparator function to verify that your sort is stable by taking input: [{value: 15}, {value: 10, order: 1}, {value: 10, order: 2}]
-
-- Implement selection sort for a linked list (you can use your data structure implemention from earlier in the course). How does this impact performance and stability?
+TODO: - Implement as a stable sort - rather than swapping, the minimum value is inserted into the first position and all other items are shifted one to the right. How does this impact performance?
+TODO: - Modify function to take comparator function. specify default if not provided (check out native Array.sort comparator function for reference)
+TODO: - Use your comparator function to verify that your sort is stable by taking input: [{value: 15}, {value: 10, order: 1}, {value: 10, order: 2}]
+TODO: - Implement selection sort for a linked list (you can use your data structure implemention from earlier in the course). How does this impact performance and stability?
 
 */

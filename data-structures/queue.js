@@ -12,42 +12,38 @@ DO NOT use an array and the native push/shift method in your implementation. Use
 
 *** Operations:
 
-myQueue.enqueue(value)
-=> count of queue
-add value to collection
+// myQueue.enqueue(value)
+// => count of queue
+// add value to collection
 
-myQueue.dequeue()
-=> oldest element added collection
-Remove item so that it is no longer in collection
+// myQueue.dequeue()
+// => oldest element added collection
+// Remove item so that it is no longer in collection
 
-myQueue.peek()
-=> oldest element added collection
-Similiar to dequeue, but do not remove element from collection
+// myQueue.peek()
+// => oldest element added collection
+// Similiar to dequeue, but do not remove element from collection
 
-myQueue.count()
-=> number of elements in queue
+// myQueue.count()
+// => number of elements in queue
 
 
 *** Additional Exercises:
 
-Modify your queue to take a max capacity and return a string if you try to add an element when there's no more room:
-myQueue.enqueue(value)
-=> "Max capacity already reached. Remove element before adding a new one."
+// Modify your queue to take a max capacity and return a string if you try to add an element when there's no more room:
+// myQueue.enqueue(value)
+// => "Max capacity already reached. Remove element before adding a new one."
 
-Create a contains method to check if a value is in the queue:
-myQueue.contains('findme')
-=> true/false
-What's the time complexity?
+// Create a contains method to check if a value is in the queue:
+// myQueue.contains('findme')
+// => true/false
+// What's the time complexity?
 
-Create an until method to get the number of dequeues until you get to a certain value:
-queue values - (first)2-5-7-3-6-9(last)
-myQueue.until(7)
-=> 3
-What's the time complexity?
-
-
-
-
+// Create an until method to get the number of dequeues until you get to a certain value:
+// queue values - (first)2-5-7-3-6-9(last)
+// myQueue.until(7)
+// => 3
+// What's the time complexity?
  */
 
 function Queue(capacity) {
@@ -141,7 +137,7 @@ QueueWithStacks.prototype.count = function() {
 /*
 *** Exercises:
 
-//TODO: 1. Implement a queue using two stacks.
+// 1. Implement a queue using two stacks.
 
 TODO: 2. Implement a double-ended queue, with the following methods: enqueueLeft, dequeueLeft, enqueueRight, dequeueRight.
 
