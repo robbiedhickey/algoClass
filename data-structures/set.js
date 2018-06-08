@@ -41,55 +41,112 @@ Make your set able to take objects, arrays, and functions as values in addition 
 
 function Set(capacity) {
   // implement me...
+  this.capacity = capacity;
+  this.storage = {};
 }
 
 Set.prototype.count = function() {
-  // implement me...
+  return Object.keys(this.storage).length;
 };
-// Time complexity:
+// Time complexity: O(n);
 
 Set.prototype.add = function(value) {
-  // implement me...
+  this.storage[value] = value;
 };
-// Time complexity:
+// Time complexity: O(1)
 
 Set.prototype.delete = function(value) {
-  // implement me...
+  if (this.storage[value] === value) {
+    delete this.storage[value];
+    return true;
+  }
+  return false;
 };
-// Time complexity:
+// Time complexity: O(1)
 
 Set.prototype.has = function(value) {
-  // implement me...
+  return this.storage[value] === value;
 };
-// Time complexity:
+// Time complexity: O(1);
 
 Set.prototype.forEach = function(callback) {
-  // implement me...
+  return Object.keys(this.storage).map(key => {
+    return callback(this.storage[key]);
+  });
 };
-// Time complexity:
+// Time complexity: O(n)
 
+Set.prototype.union = function(otherSet) {
+  let unionSet = new Set();
+
+  this.forEach(item => {
+    unionSet.add(item);
+  });
+
+  otherSet.forEach(item => {
+    if (!unionSet.has(item)) {
+      unionSet.add(item);
+    }
+  });
+
+  return unionSet;
+};
+
+Set.prototype.intersection = function(otherSet) {
+  let intersectionSet = new Set();
+
+  this.forEach(item => {
+    if (otherSet.has(item)) {
+      intersectionSet.add(item);
+    }
+  });
+
+  return intersectionSet;
+};
+
+Set.prototype.difference = function(otherSet) {
+  let differenceSet = new Set();
+
+  this.forEach(item => {
+    if (!otherSet.has(item)) {
+      differenceSet.add(item);
+    }
+  });
+
+  return differenceSet;
+};
+
+Set.prototype.hasSubset = function(subset) {
+  let results = subset.forEach(item => {
+    if (this.has(item)) {
+      return true;
+    }
+  });
+
+  return results.every(result => result === true);
+};
 
 /*
 *** Exercises:
 
 1. Implement the following set theory operations:
 
-mySet.union(otherSet)
+// TODO: mySet.union(otherSet)
 => mySet with added values from otherSet
 add any values from otherSet into mySet that are not yet there
 ex: {1,2,3} union {2,3,4} => {1,2,3,4}
 
-mySet.intersection(otherSet)
+// TODO: mySet.intersection(otherSet)
 => mySet with values removed that are not in otherSet
 remove values from mySet that are not in otherSet
 ex: {1,2,3} intersection {2,3,4} => {2,3}
 
-mySet.difference(otherSet)
+// TODO: mySet.difference(otherSet)
 => mySet with values removed that are in otherSet
 remove values from mySet that are in otherSet
 ex: {1,2,3} difference {2,3,4} => {1}
 
-mySet.hasSubset(otherSet)
+// TODO: mySet.hasSubset(otherSet)
 => true/false depending on if otherSet is a subset of mySet
 ex: {1,2,3} hasSubset {2,3,4} => false
 ex: {1,2,3} hasSubset {2,3} => true
@@ -105,3 +162,5 @@ whitelistFilter(collection <array>, whitelist <array>)
 * exercises adapted from Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne
 
  */
+
+module.exports = Set;
