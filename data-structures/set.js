@@ -9,32 +9,32 @@ Your set should be able to store any JavaScript primitive
 
 *** Operations:
 
-mySet.count()
-=> integer value for the number of values present in set
+// mySet.count()
+// => integer value for the number of values present in set
 
-mySet.add(value)
-=> set object
+// mySet.add(value)
+// => set object
 
-mySet.delete(value)
-=> true if value was present and removed
-=> false if value was not present
+// mySet.delete(value)
+// => true if value was present and removed
+// => false if value was not present
 
-mySet.has(value)
-=> true/false
+// mySet.has(value)
+// => true/false
 
-mySet.forEach(callbackFn)
-=> no return value
-calls callbackFn once for each value in the set
+// mySet.forEach(callbackFn)
+// => no return value
+// calls callbackFn once for each value in the set
 
 Note: ES6 has a Set data structure as part of the core language.
 
 *** Additional Exercises:
 
-Modify your set to take a max capacity and return a string if you try to add an element when there's no more room
-mySet.add(value)
-=> "Max capacity already reached. Remove element before adding a new one."
+// Modify your set to take a max capacity and return a string if you try to add an element when there's no more room
+// mySet.add(value)
+// => "Max capacity already reached. Remove element before adding a new one."
 
-Make your set able to take objects, arrays, and functions as values in addition to just primitives.
+// Make your set able to take objects, arrays, and functions as values in addition to just primitives.
 
 
  */
@@ -51,7 +51,9 @@ Set.prototype.count = function() {
 // Time complexity: O(n);
 
 Set.prototype.add = function(value) {
-  this.storage[value] = value;
+  if (this.count() >= this.capacity) throw 'Max capacity has been reached';
+  let key = this.getKey(value);
+  this.storage[key] = value;
 };
 // Time complexity: O(1)
 
@@ -65,9 +67,22 @@ Set.prototype.delete = function(value) {
 // Time complexity: O(1)
 
 Set.prototype.has = function(value) {
-  return this.storage[value] === value;
+  let key = this.getKey(value);
+  return this.storage[key] === value;
 };
 // Time complexity: O(1);
+
+Set.prototype.getKey = function(value) {
+  if (
+    (typeof value === 'object' || typeof value === 'array') &&
+    value !== null
+  ) {
+    return JSON.stringify(value);
+  } else if (typeof value === 'function') {
+    return value.toString();
+  }
+  return value;
+};
 
 Set.prototype.forEach = function(callback) {
   return Object.keys(this.storage).map(key => {
@@ -126,41 +141,66 @@ Set.prototype.hasSubset = function(subset) {
   return results.every(result => result === true);
 };
 
+Set.prototype.toArray = function() {
+  return Object.keys(this.storage).map(key => this.storage[key]);
+};
+
+Set.from = function(array) {
+  return array.reduce((set, value) => {
+    set.add(value);
+    return set;
+  }, new Set());
+};
+
+function whitelistFilter(collection, whitelist) {
+  let collectionSet = Set.from(collection);
+  let whitelistSet = Set.from(whitelist);
+  let result = collectionSet.intersection(whitelistSet);
+  return result.toArray();
+}
+
+function blacklistFilter(collection, blacklist) {
+  let collectionSet = Set.from(collection);
+  let blacklistSet = Set.from(blacklist);
+  let result = collectionSet.difference(blacklistSet);
+  return result.toArray();
+}
+
 /*
 *** Exercises:
 
-1. Implement the following set theory operations:
+// 1. Implement the following set theory operations:
 
-// TODO: mySet.union(otherSet)
-=> mySet with added values from otherSet
-add any values from otherSet into mySet that are not yet there
-ex: {1,2,3} union {2,3,4} => {1,2,3,4}
+// mySet.union(otherSet)
+// => mySet with added values from otherSet
+// add any values from otherSet into mySet that are not yet there
+// ex: {1,2,3} union {2,3,4} => {1,2,3,4}
 
-// TODO: mySet.intersection(otherSet)
-=> mySet with values removed that are not in otherSet
-remove values from mySet that are not in otherSet
-ex: {1,2,3} intersection {2,3,4} => {2,3}
+// mySet.intersection(otherSet)
+// => mySet with values removed that are not in otherSet
+// remove values from mySet that are not in otherSet
+// ex: {1,2,3} intersection {2,3,4} => {2,3}
 
-// TODO: mySet.difference(otherSet)
-=> mySet with values removed that are in otherSet
-remove values from mySet that are in otherSet
-ex: {1,2,3} difference {2,3,4} => {1}
+// mySet.difference(otherSet)
+// => mySet with values removed that are in otherSet
+// remove values from mySet that are in otherSet
+// ex: {1,2,3} difference {2,3,4} => {1}
 
-// TODO: mySet.hasSubset(otherSet)
-=> true/false depending on if otherSet is a subset of mySet
-ex: {1,2,3} hasSubset {2,3,4} => false
-ex: {1,2,3} hasSubset {2,3} => true
+// mySet.hasSubset(otherSet)
+// => true/false depending on if otherSet is a subset of mySet
+// ex: {1,2,3} hasSubset {2,3,4} => false
+// ex: {1,2,3} hasSubset {2,3} => true
 
 
-2*. Using a set, create a whitelist filter - given a list of whitelist items and a collection to be filtered, return an array with only the items from the collection that are on the whitelist:
+// 2*. Using a set, create a whitelist filter - given a list of whitelist items and a collection to be filtered, return an array with only the items from the collection that are on the whitelist:
 
-whitelistFilter(collection <array>, whitelist <array>)
-=> filtered collection <array> with only items from white list
+// whitelistFilter(collection <array>, whitelist <array>)
+// => filtered collection <array> with only items from white list
 
-3*. Now create a blacklist filter.
+// 3*. Now create a blacklist filter.
 
 * exercises adapted from Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne
 
  */
 
-module.exports = Set;
+module.exports = { Set, whitelistFilter, blacklistFilter };

@@ -1,4 +1,4 @@
-const Set = require('./set');
+const { Set, whitelistFilter, blacklistFilter } = require('./set');
 
 describe('Set', () => {
   describe('constructor()', () => {
@@ -27,6 +27,42 @@ describe('Set', () => {
       expect(set.has(true)).toEqual(true);
       expect(set.has(null)).toEqual(true);
       expect(set.has(undefined)).toEqual(true);
+    });
+
+    test('respects capacity', () => {
+      let set = new Set(1);
+      set.add(1);
+      expect(() => set.add(2)).toThrowError();
+    });
+
+    test('can add objects', () => {
+      let set = new Set();
+      let obj1 = { a: 1 };
+      let obj2 = { b: 2 };
+      set.add(obj1);
+      set.add(obj2);
+      expect(set.has(obj1)).toEqual(true);
+      expect(set.count()).toEqual(2);
+    });
+
+    test('can add arrays', () => {
+      let set = new Set();
+      let arr1 = [1];
+      let arr2 = [2];
+      set.add(arr1);
+      set.add(arr2);
+      expect(set.has(arr1)).toEqual(true);
+      expect(set.count()).toEqual(2);
+    });
+
+    test('can add functions', () => {
+      let set = new Set();
+      let fn1 = n => 1;
+      let fn2 = n => 2;
+      set.add(fn1);
+      set.add(fn2);
+      expect(set.has(fn1)).toEqual(true);
+      expect(set.count()).toEqual(2);
     });
   });
 
@@ -152,5 +188,41 @@ describe('Set', () => {
       let hasSubset = set.hasSubset(subset);
       expect(hasSubset).toEqual(false);
     });
+  });
+
+  describe('from()', () => {
+    test('can generate a set from an array', () => {
+      let set = Set.from([1, 2]);
+      expect(set.has(1)).toEqual(true);
+      expect(set.has(2)).toEqual(true);
+      expect(set.has(3)).toEqual(false);
+    });
+  });
+
+  describe('toArray()', () => {
+    test('can generate an array from a set', () => {
+      let originalArray = [1, 2];
+      let set = Set.from(originalArray);
+      let resultArray = set.toArray();
+      expect(resultArray).toEqual(originalArray);
+    });
+  });
+});
+
+describe('whitelistFilter()', () => {
+  test('only returns whitelisted items in result array', () => {
+    let collection = [1, 2, 3, 4];
+    let whitelist = [2, 3];
+    let result = whitelistFilter(collection, whitelist);
+    expect(result).toEqual(whitelist);
+  });
+});
+
+describe('blacklistFilter()', () => {
+  test('does not return blacklisted items in result array', () => {
+    let collection = [1, 2, 3, 4];
+    let blacklist = [2, 3];
+    let result = blacklistFilter(collection, blacklist);
+    expect(result).toEqual([1, 4]);
   });
 });
